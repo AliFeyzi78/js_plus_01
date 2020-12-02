@@ -37,5 +37,38 @@ const data = [
   },
 ];
 
-const articles = document.querySelector("#articles");
-console.log(articles);
+function loadArticles(readingCount) {
+  let articleData = data;
+  const articles = document.querySelector("#articles");
+  articles.innerHTML = "";
+
+  if (readingCount != undefined) {
+    articleData = data.filter((art) => readingCount < art.readCount);
+  }
+
+  articleData.forEach((d) => {
+    const articleElement = document.createElement("div");
+    articleElement.classList.add("article");
+
+    articleElement.innerHTML = `
+        <p class="title">${d.title}</p>
+        <p>${d.desc}</p>
+        <p class="reading_count">Reading: ${d.readCount}</p>
+        `;
+
+    articles.appendChild(articleElement);
+  });
+}
+
+function filterArticles() {
+  const countValue = document.querySelector("#count_input").value;
+  loadArticles(countValue);
+}
+
+document
+  .querySelector("#search_button")
+  .addEventListener("click", filterArticles);
+
+loadArticles();
+
+//console.log(articles);
