@@ -1,0 +1,8 @@
+1. elimizde data'mız var
+2. foreach ile datamızı mevcut bir div'e child olarak ekledik
+    - element oluşturduk ve bir class gönderdik
+    -  innerHtml'ine de data'dan veri çekerek tagleri oluşturduk
+    - ana div içerisine append ettik
+3. input'tan geln değerlere göre filtre yapacağız
+    - buton clik'ine bir event ekledik
+    - 
