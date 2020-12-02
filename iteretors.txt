@@ -1,0 +1,76 @@
+foreach;
+    const numbers = [1, 2, 3, 5, 7, 8, 11, 30];
+    numbers.forEach((number) => {
+        console.log(number);
+    });
+
+map;
+    const newNumber = numbers.map((num) => {
+        return num ** 2;
+    });
+    console.log(newNumber, numbers);
+
+find;
+    const users = [
+        { id: 0, name: "al", age: 12 },
+        { id: 1, name: "ev", age: 15 },
+        { id: 2, name: "ra", age: 14 },
+        { id: 3, name: "te", age: 13 },
+    ];
+    const myUser = users.find((user) => user.age === 12);
+    console.log(myUser);
+
+filter;
+    const myUser = users.filter((user) => user.age > 13);
+    console.log(myUser);
+
+reducer; --> iki parametre alır. 1.si birönceki return değeri 2. sıradaki değer.
+    const myArray = [1, 2, 5, 33, 5, 7, 9, 44];
+
+     const mySum = myArray.reduce((acc, curr) => {
+       return acc + curr;
+     });
+
+     console.log(mySum);
+      
+    başka bir örnek; -->array'deki en büyük sayıyı verir. 
+    const myMax = myArray.reduce((acc, curr) => {
+        return acc > curr ? acc : curr;
+    });
+    console.log(myMax);
+
+every, some;
+every-> bütün condition'lar sağlanırsa true döner,
+some-> bir tane bile condition sağlanırsa true döner. 
+
+    const users = [
+    { id: 0, isOld: true, name: "al", age: 12 },
+    { id: 1, isOld: true, name: "ev", age: 15 },
+    { id: 2, isOld: true, name: "ra", age: 14 },
+    { id: 3, isOld: true, name: "te", age: 13 },
+    ];
+
+    console.log(users.every((user) => user.isOld === true)); -->true
+    console.log(users.some((user) => user.id === 1));    -->true
+
+for-in / for-of;
+array'lerde forEach kullabiliyoruz fakat object olursa bunları kullanacağız
+
+    const user = {id: 0, isOld: true, name: "al", age: 12};
+
+        for (key in user) {
+        console.log(key, user[key]); -->key object key'ini user[key] ise value'yu verir
+        }
+
+    const userArray = [
+    { id: 0, isOld: true, name: "al", age: 12 },
+    { id: 1, isOld: true, name: "ev", age: 15 },
+    { id: 2, isOld: true, name: "ra", age: 14 },
+    { id: 3, isOld: true, name: "te", age: 13 },
+    ];
+
+    for (element of userArray) {  -->iterable olması gerekir
+    console.log(element);
+    }
+
+    ders bitti
