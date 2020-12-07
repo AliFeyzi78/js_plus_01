@@ -1,0 +1,107 @@
+1. const colors = ["red", "blue", "gray", "green", "purple"];
+button'a basınca rasgele bir renk seçip arkaplan rengini değiştirelim. ve bu rengi h1 etiketine yazdıralım
+    ç:
+        const randomColorButton = document.querySelector("#randomColorButton");
+
+        randomColorButton.addEventListener("click", changeColor);
+
+        function changeColor() {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        document.querySelector("#colorName").innerHTML = colors[randomIndex];
+        document.querySelector("body").style.backgroundColor = colors[randomIndex];
+        }
+    
+
+2. kullanıcının girdiği string i renk listesine eklemek ve arkaplanı o renk yapmak
+    ÇÖZÜM:
+   
+
+        const randomColorButton = document.querySelector("#randomColorButton");
+        const addColorButton = document.querySelector("#setColorButton");
+
+        addColorButton.addEventListener("click", addColor);
+        randomColorButton.addEventListener("click", changeColor);
+
+        function changeColor() {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+
+        document.querySelector("#colorName").innerHTML = colors[randomIndex];
+        document.querySelector("body").style.backgroundColor = colors[randomIndex];
+        }
+
+        function addColor() {
+        const userInput = document.querySelector(".colorInput");
+
+        if (colors.indexOf(userInput.value) === -1) {
+            document.querySelector("body").style.backgroundColor = userInput.value;
+            colors.push(userInput.value);
+            userInput.value = "";
+            userInput.focus();
+        } else {
+            alert("daha önce girdiniz!!!");
+        }
+        }
+
+3. Listeyi JSON'a çevirdik ve output kutucuğu 2'ye çıkardık.
+            1.-> renk ismi 2.->renk desc yazmasını istiyoruz
+
+            onst colors = [
+        {
+            name: "red",
+            motto: "Rose Red",
+        },
+        {
+            name: "blue",
+            motto: "Ocean Blue",
+        },
+        {
+            name: "gray",
+            motto: "Smoke Gray",
+        },
+        {
+            name: "green",
+            motto: "Grass Green",
+        },
+        {
+            name: "purple",
+            motto: "deep Purple",
+        },
+        ];
+
+        const randomColorButton = document.querySelector("#randomColorButton");
+        const addColorButton = document.querySelector("#setColorButton");
+
+        addColorButton.addEventListener("click", addColor);
+        randomColorButton.addEventListener("click", changeColor);
+
+        function changeColor() {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+
+        document.querySelector("#colorName").innerHTML = colors[randomIndex].name;
+        document.querySelector("body").style.backgroundColor =
+            colors[randomIndex].name;
+        document.querySelector("#colorDesc").innerHTML = colors[randomIndex].motto;
+        }
+
+        function addColor() {
+        const userInput = document.querySelector(".colorInput");
+
+        const colorData = userInput.value.split(":");
+
+        const colorObject = {
+            name: colorData[0],
+            motto: colorData[1],
+        };
+
+        if (colors.findIndex((color) => color.name === colorObject.name) === -1) {
+            document.querySelector("body").style.backgroundColor = colorObject.name;
+            document.querySelector("#colorName").innerHTML = colorObject.name;
+            document.querySelector("#colorDesc").innerHTML = colorObject.motto;
+
+            colors.push(colorObject);
+            userInput.value = "";
+            userInput.focus();
+        } else {
+            alert("daha önce girdiniz!!!");
+        }
+        }
