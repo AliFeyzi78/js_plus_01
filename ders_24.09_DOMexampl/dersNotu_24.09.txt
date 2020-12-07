@@ -1,0 +1,76 @@
+JS'den HTML' ye erişim için;
+
+- getElement
+1. id ile
+    document.getElementById("xxxxxx");
+2. class ile:
+    const element = document.getElementsByClassName("xxxxxx");
+3. tag ile:
+    const element = document.getElementsByTagName("xxxxxx");
+
+- querySelector
+1. id veya class için "#" veya "." ile
+    const element = document.querySelector("#xxxxx");
+
+- querySelectorAll
+1. bütün id veya class'lar için "#" veya "." ile ()
+    const element = document.querySelectorAll(".xxxxxxx");
+2. tag'ler için
+    const element = document.querySelectorAll("p");
+
+*********************************************************
+HTML içine ekleme apmak için;
+
+- xxxx.innerHTML;
+    const element = document.querySelector("#my_element");
+    element.innerHTML = "<p>Hello!</p>";
+
+- foreach ile liste eklemek;
+    const listElement = document.querySelector("#cars");
+
+    car_list.forEach((car) => {
+    listElement.innerHTML += `<li class="car_class">${car.brandName}</li>`;
+    });
+
+*************************************************************
+
+bir element'in attributunu değiştirmek
+
+- get ve set attribute
+    const element = document.querySelector("#link"); -->ilgili tag'e ulaşıyoruz.
+
+    const attr = element.getAttribute("href"); --> sonra attribute'a ulaşıyoruz.
+    console.log(attr);
+
+    element.setAttribute("href", "https://clarusway.com");  --> attribute'u değiştiriyoruz.
+
+
+*************************************************************
+
+bir class veya id nin style'ını değiştirmek istiyorsak
+
+-   const element = document.querySelector(".hello");
+    element.style.color = "red";
+
+- css dosyamızdaki mevcut bir class'ı id ile çağırdığımız bir tag'e ekliyoruz 
+    const element = document.querySelector("#my_banner");
+    console.log(element.classList);
+
+    element.classList.add("active");
+    console.log(element.classList);
+
+- yeni bir element oluşturup bunu başka var olan elemente eklemek için;
+    const myElement = document.createElement("p");
+    myElement.innerText = "Perşembe!";
+
+    element.appendChild(myElement);
+
+- ***event eklemek;
+    document.querySelector("#btn").addEventListener("click", clickFunction);
+
+    document.querySelector("#para").addEventListener("mouseenter", function () {
+    alert("go away!!");
+    });
+
+    function clickFunction() {
+    document.querySelector("#para").innerText = "Don't afraid!";
